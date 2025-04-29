@@ -16,8 +16,11 @@
         function Adicionar(){
             let tag_ul1 = document.getElementById('ausente')
             let tag_li = document.createElement('li')
-            let tarefa = documente.getElementById('tarefa_nova')
-            tag_ul1.appendChild(tag_li);
+            let tarefa = document.getElementById('tarefa_nova')
+            tag_li.innerText = tarefa.value
+            tag_ul1.appendChild(tag_li)
+            tag_li.innerHTML = `<input type ='checkbox'>${tarefa.value}`
+
         }
     </script>
 
