@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de tarefas!</title>
     <style>
         ul{
             list-style: none;
@@ -18,15 +18,40 @@
     <h2>Tarefas concluidas!</h2>
     <ul id="concluidas"></ul>
     <script>
+        let tag_ul1 = document.getElementById('ausente')
+        let tag_ul2 = document.getElementById('concluidas')
         function Adicionar(){
-            let tag_ul1 = document.getElementById('ausente')
             let tag_li = document.createElement('li')
             let tarefa = document.getElementById('tarefa_nova')
             tag_li.innerText = tarefa.value
             tag_ul1.appendChild(tag_li)
-            tag_li.innerHTML = `<input type ='checkbox'>${tarefa.value}`
+            var IDGerado = Date.now();
+            tag_li.innerHTML = `<input type ='checkbox' id = '${IDGerado}' onclick = "verificar(${IDGerado})">${tarefa.value}`
+            
+        }
+        function verificar(IDGerado){
+            var guardar = document.getElementById(`${IDGerado}`)
+            if (guardar.checked == true){
+                adicionar2(guardar);
+            }else{
+                retirar(guardar)
+            }
 
         }
+        function adicionar2(guardar){
+          tag_li2 = document.createElement('li')
+          tag_li2.innerText = (guardar.parentElement).innerText
+          tag_ul2.appendChild(tag_li2)
+          console.log(tag_li2)
+          tag_li2.setAttribute("id",`Concluida_${guardar.id}`)
+        }
+
+       function retirar(guardar){
+        tag_x = document.getElementById(`Concluida_${guardar.id}`)
+        tag_x.remove();
+        guardar.parentElement.style.textDecoration="none";
+       }
+
     </script>
 
 </body>
