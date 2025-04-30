@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar e Excluir Itens</title>
+</head>
+<body>
+
+  <ul id="lista">
+    <li>
+      Item 1 
+      <button onclick="editarItem(this)">Editar</button>
+      <button onclick="excluirItem(this)">Excluir</button>
+    </li>
+    <li>
+      Item 2 
+      <button onclick="editarItem(this)">Editar</button>
+      <button onclick="excluirItem(this)">Excluir</button>
+    </li>
+  </ul>
+
+  <script>
+    function excluirItem(botao) {
+      const item = botao.parentElement;
+      item.remove();
+    }
+
+    function editarItem(botao) {
+      const item = botao.parentElement;
+      const textoAtual = item.firstChild.textContent.trim();
+      const novoTexto = prompt("Editar item:", textoAtual);
+      if (novoTexto) {
+        item.firstChild.textContent = novoTexto + " ";
+      }
+    }
+  </script>
+
+</body>
+</html>

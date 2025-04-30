@@ -26,8 +26,9 @@
             tag_li.innerText = tarefa.value
             tag_ul1.appendChild(tag_li)
             var IDGerado = Date.now();
-            tag_li.innerHTML = `<input type ='checkbox' id = '${IDGerado}' onclick = "verificar(${IDGerado})">${tarefa.value}`
-            
+            tag_li.innerHTML = `<input type ='checkbox' id = '${IDGerado}' onclick = "verificar(${IDGerado})" >${tarefa.value}  <button onclick="deletar(${IDGerado})"></button><button onclick="editar(${this})"></button>`;
+            tag_ul1.appendChild(tag_li);
+            tarefa.value = ''
         }
         function verificar(IDGerado){
             var guardar = document.getElementById(`${IDGerado}`)
@@ -35,8 +36,7 @@
                 adicionar2(guardar);
             }else{
                 retirar(guardar)
-            }
-
+            } 
         }
         function adicionar2(guardar){
           tag_li2 = document.createElement('li')
@@ -51,6 +51,10 @@
         tag_x.remove();
         guardar.parentElement.style.textDecoration="none";
        }
+       
+       function excluir(){
+
+        }
 
     </script>
 
