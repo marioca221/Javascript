@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tarefas!</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li {
+            margin: 5px 0;
+        }
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de tarefas</h1>
+    <input type="text" id="tarefa_nova" placeholder="Tarefas...">
+    <button onclick="Adicionar()">ADD</button>
+    <ul id="ausente"></ul>
+    <hr>
+    <h2>Tarefas concluídas!</h2>
+    <ul id="concluidas"></ul>
+
+    <script>
+        let tag_ul1 = document.getElementById('ausente');
+        let tag_ul2 = document.getElementById('concluidas');
+
+        function Adicionar() {
+            let tarefa = document.getElementById('tarefa_nova');
+            if (tarefa.value.trim() === '') return;
+
+            let tag_li = document.createElement('li');
+            let ID = Date.now();
+
+            tag_li.setAttribute('id', `tarefa_${ID}`);
+            tag_li.innerHTML = `
+                <input type="checkbox" id="${ID}" onclick="verificar(${ID})">
+                <span id="texto_${ID}">${tarefa.value}</span>
+                <button onclick="editar(${ID})">Editar</button>
+                <button onclick="deletar(${ID})">Excluir</button>
+            `;
+
+            tag_ul1.appendChild(tag_li);
+            tarefa.value = '';
+        }
+
+        function verificar(ID) {
+            let checkbox = document.getElementById(ID);
+            let li = checkbox.parentElement;
+            let texto = document.getElementById(`texto_${ID}`).innerText;
+
+            if (checkbox.checked) {
+                let tag_li2 = document.createElement('li');
+                tag_li2.innerText = texto;
+                tag_li2.setAttribute("id", `Concluida_${ID}`);
+                tag_ul2.appendChild(tag_li2);
+            } else {
+                let tag_remover = document.getElementById(`Concluida_${ID}`);
+                if (tag_remover) tag_remover.remove();
+            }
+        }
+
+        function deletar(ID) {
+            let tarefa = document.getElementById(`tarefa_${ID}`);
+            let concluida = document.getElementById(`Concluida_${ID}`);
+            if (tarefa) tarefa.remove();
+            if (concluida) concluida.remove();
+        }
+
+        function editar(ID) {
+            let textoSpan = document.getElementById(`texto_${ID}`);
+            let novoTexto = prompt("Editar tarefa:", textoSpan.innerText);
+            if (novoTexto !== null && novoTexto.trim() !== '') {
+                textoSpan.innerText = novoTexto;
+            }
+        }
+    </script>
+</body>
+</html>

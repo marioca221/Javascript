@@ -12,7 +12,8 @@
 </head>
 <body>
     <h1>Lista de tarefas</h1>
-    <input type="text" id="tarefa_nova" placeholder="Tarefas.."><button onclick="Adicionar()">ADD</button>
+    <input type="text" id="tarefa_nova" placeholder="Tarefas..">
+    <button onclick="Adicionar()">ADD</button>
     <ul id="ausente"></ul>
     <hr>
     <h2>Tarefas concluidas!</h2>
@@ -26,9 +27,8 @@
             tag_li.innerText = tarefa.value
             tag_ul1.appendChild(tag_li)
             var IDGerado = Date.now();
-            tag_li.innerHTML = `<input type ='checkbox' id = '${IDGerado}' onclick = "verificar(${IDGerado})" >${tarefa.value}  <button onclick="deletar(${IDGerado})"></button><button onclick="editar(${this})"></button>`;
-            tag_ul1.appendChild(tag_li);
-            tarefa.value = ''
+            tag_li.innerHTML = `<input type ='checkbox' id = '${IDGerado}' onclick = "verificar(${IDGerado})"  > <span>${tarefa.value}</span> <button onclick ="excluir(${IDGerado})">Excluir</button>` 
+            
         }
         function verificar(IDGerado){
             var guardar = document.getElementById(`${IDGerado}`)
@@ -39,12 +39,17 @@
             } 
         }
         function adicionar2(guardar){
-          tag_li2 = document.createElement('li')
-          tag_li2.innerText = (guardar.parentElement).innerText
-          tag_ul2.appendChild(tag_li2)
-          console.log(tag_li2)
-          tag_li2.setAttribute("id",`Concluida_${guardar.id}`)
+         tag_li2 = document.createElement('li')
+         tag_li2.setAttribute("id",`Concluida_${guardar.id}`);
+         let conteudo_tarefa = guardar.parentElement.getElementsByTagName('span')[0].textContent
+         tag_li2.innerText = conteudo_tarefa
+         tag_ul2.appendChild(tag_li2)
+         guardar.parentElement.style.textDecoration="line-through";
+
+
+          
         }
+
 
        function retirar(guardar){
         tag_x = document.getElementById(`Concluida_${guardar.id}`)
@@ -52,9 +57,16 @@
         guardar.parentElement.style.textDecoration="none";
        }
        
-       function excluir(){
+       function excluir(IDGerado){
+        tag_removida = document.getElementById(`${IDGerado}`);
+        tag_removida.parentElement.remove();
+        tag_2 = document.getElementById(`Concluida_${IDGerado}`);
+        tag_2.remove();
 
-        }
+ 
+       }
+
+        
 
     </script>
 
