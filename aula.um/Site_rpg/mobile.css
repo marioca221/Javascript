@@ -7,7 +7,8 @@ body{
     margin: 0;
     font-family: 'Arvo', 'Crete Round', 'PT Serif', 'Volkhov', sans-serif;
 
-}
+}    
+
 html{
     height: 100%;
 }
@@ -114,10 +115,14 @@ main{
     padding: 30px;
 }
 .campanhas .item3 button{
-    width: 50px;
+     width: 50px;
 }
 
 p{
     font-size: 118%;
-    color: #a77cc1;
-} 
+    color: #ffffff;
+    margin: 20px;
+}
+.item{
+    
+}
