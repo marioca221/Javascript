@@ -1,7 +1,7 @@
 
   
 body{
-    background: linear-gradient(to bottom, #000000, #70065d);
+    background: linear-gradient(to bottom, #00060f,#033649 );
     background-repeat: no-repeat;
     height: 100%;
     margin: 0;
@@ -16,8 +16,8 @@ nav{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: rgb(1, 4, 32);
-    border-bottom: 5px rgb(213, 211, 211) solid;
+    background-color: #010e0e;
+    border-bottom: 5px #e8ddcb solid;
     color: white;
 }
 ul{
@@ -34,7 +34,7 @@ a{
 }
 
 a:hover, a:active{
-    color: rgb(139, 3, 137);
+    color: #cdb380;
 }
 
 
@@ -42,7 +42,7 @@ a:hover, a:active{
     .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #2f022b;
+        background-color: #036564;
         position:absolute;
         top: 60px;
         right: 0;
@@ -120,9 +120,6 @@ main{
 
 p{
     font-size: 118%;
-    color: #ffffff;
+    color: #f5ecde;
     margin: 20px;
-}
-.item{
-    
 }
